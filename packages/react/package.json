@@ -2,11 +2,25 @@
   "name": "@firebase-auth/react",
   "version": "0.0.1",
   "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/firebase-auth-react.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/firebase-auth-react.es.js"
+    }
+  },
   "scripts": {
     "dev": "tsc && vite build --watch",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --ignore-path .gitignore",
+    "prettier": "prettier --ignore-path .gitignore .",
+    "lint": "pnpm run prettier --check && pnpm run eslint",
+    "fmt": "pnpm run prettier --write && pnpm run eslint --fix",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -20,9 +34,15 @@
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
