@@ -1,7 +1,17 @@
 import type { FC } from 'react'
-import { helloWorld } from '@firebase-auth/react'
+import { Provider, SignIn } from '@firebase-auth/react'
+import { app } from './utils/firebase'
+import { GoogleAuthProvider } from 'firebase/auth'
 
 export const App: FC = () => {
-  console.log(helloWorld())
-  return <>Hello world!</>
+  return (
+    <Provider
+      app={app}
+      providerIds={[GoogleAuthProvider.PROVIDER_ID]}
+      flow="redirect"
+    >
+      Hello world!
+      <SignIn />
+    </Provider>
+  )
 }
