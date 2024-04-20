@@ -1,4 +1,3 @@
-import 'vanilla-reset'
 // Component
 export * from './Provider'
 

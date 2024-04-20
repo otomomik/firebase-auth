@@ -24,7 +24,10 @@ export const GithubButton: FC<Props> = ({ ...props }) => {
   }
 
   return (
-    <BaseButton onClick={handleClick} {...props}>
+    <BaseButton
+      id={providerId}
+      {...{ ...props, onClick: props?.onClick ?? handleClick }}
+    >
       <GithubIcon />
     </BaseButton>
   )

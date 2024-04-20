@@ -18,6 +18,9 @@
     },
     "./style.css": {
       "import": "./dist/style.css"
+    },
+    "./reset.css": {
+      "import": "./dist/reset.css"
     }
   },
   "types": "./dist/index.d.ts",
@@ -36,8 +39,7 @@
     "clsx": "^2.1.0",
     "firebase": "^10.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vanilla-reset": "^2021.11.29"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.5",

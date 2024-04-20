@@ -50,6 +50,7 @@ export const SocialButtonGroup: FC<Props> = ({ className }) => {
                 }),
                 styles.label
               )}
+              htmlFor={id}
             >
               {label}
             </label>

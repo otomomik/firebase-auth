@@ -24,7 +24,10 @@ export const GoogleButton: FC<Props> = ({ ...props }) => {
   }
 
   return (
-    <BaseButton {...{ ...props, onClick: props?.onClick ?? handleClick }}>
+    <BaseButton
+      id={providerId}
+      {...{ ...props, onClick: props?.onClick ?? handleClick }}
+    >
       <GoogleIcon />
     </BaseButton>
   )

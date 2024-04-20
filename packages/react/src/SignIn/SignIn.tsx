@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { ComponentProps, FC } from 'react'
 import { SocialButtonGroup } from './SocialButtonGroup'
 import * as styles from './sign-in.css'
 import clsx from 'clsx'
@@ -10,16 +10,16 @@ import { EmailPasswordForm } from './EmailPasswordForm'
 
 type Props = {
   onClickSignUp?: VoidFunction
-}
+} & Pick<ComponentProps<typeof EmailPasswordForm>, 'onClickResetPassword'>
 
-export const SignIn: FC<Props> = ({ onClickSignUp }) => {
+export const SignIn: FC<Props> = ({ onClickSignUp, onClickResetPassword }) => {
   const { isSocialLogin } = useSetting()
 
   return (
     <div className={clsx(borderRecipe(), styles.signIn)}>
       <SocialButtonGroup />
       {isSocialLogin && <Divider />}
-      <EmailPasswordForm />
+      <EmailPasswordForm onClickResetPassword={onClickResetPassword} />
       {onClickSignUp && (
         <>
           <Divider />

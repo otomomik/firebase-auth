@@ -33,10 +33,22 @@ export const textRecipe = recipe({
         textDecoration: 'underline',
       },
     },
+    weight: {
+      light: {
+        fontWeight: '300',
+      },
+      normal: {
+        fontWeight: '400',
+      },
+      bold: {
+        fontWeight: '700',
+      },
+    },
   },
   defaultVariants: {
     size: 'md',
     color: 'black',
+    weight: 'normal',
   },
 })
 export type TextRecipeVariants = NonNullable<RecipeVariants<typeof textRecipe>>

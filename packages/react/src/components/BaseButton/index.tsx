@@ -5,7 +5,7 @@ import { borderRecipe } from '../../recipes/border.css'
 
 type Props = Pick<
   ComponentProps<'button'>,
-  'className' | 'children' | 'onClick'
+  'id' | 'className' | 'children' | 'onClick'
 >
 
 export const BaseButton: FC<Props> = ({ className, ...props }) => {
