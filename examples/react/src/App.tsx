@@ -12,7 +12,7 @@ export const App: FC = () => {
       flow="redirect"
     >
       <Page />
-      <SignIn />
+      <SignIn onClickSignUp={() => console.log('onClickSignUp')} />
     </Provider>
   )
 }

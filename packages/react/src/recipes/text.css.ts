@@ -22,6 +22,21 @@ export const textRecipe = recipe({
         fontSize: '1.5rem',
       },
     },
+    color: {
+      black: {
+        color: '#333333',
+      },
+    },
+    link: {
+      true: {
+        cursor: 'pointer',
+        textDecoration: 'underline',
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    color: 'black',
   },
 })
 export type TextRecipeVariants = NonNullable<RecipeVariants<typeof textRecipe>>

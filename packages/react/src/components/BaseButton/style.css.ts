@@ -5,10 +5,7 @@ export const baseButton = style({
   justifyContent: 'center',
   alignItems: 'center',
   padding: 16,
-  borderWidth: 1,
-  borderColor: '#333333',
   cursor: 'pointer',
-  borderStyle: 'solid',
   ':hover': {
     borderColor: '#000000',
   },
