@@ -5,5 +5,10 @@ import clsx from 'clsx'
 type Props = Pick<ComponentProps<'button'>, 'children' | 'onClick'>
 
 export const BaseButton: FC<Props> = ({ ...props }) => {
-  return <button className={clsx(styles.baseButton)} {...props} />
+  return (
+    <button
+      className={clsx(styles.baseButton, styles.roundButton)}
+      {...props}
+    />
+  )
 }

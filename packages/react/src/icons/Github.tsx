@@ -10,7 +10,7 @@ export const GithubIcon: FC<Props> = ({ size = 24 }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 98 96"
       width={size}
-      height={size - 2}
+      height={size}
     >
       <path
         fillRule="evenodd"

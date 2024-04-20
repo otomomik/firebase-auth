@@ -18,7 +18,7 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsc && tsx scripts/dev.ts",
+    "dev": "tsx scripts/dev.ts",
     "build": "tsc && vite build",
     "eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --ignore-path .gitignore",
     "prettier": "prettier --ignore-path .gitignore .",
@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.14.2",
+    "@vanilla-extract/recipes": "^0.5.2",
     "clsx": "^2.1.0",
     "firebase": "^10.10.0",
     "react": "^18.2.0",
