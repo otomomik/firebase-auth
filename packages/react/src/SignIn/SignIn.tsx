@@ -2,10 +2,11 @@ import type { FC } from 'react'
 import { SocialButtonGroup } from './SocialButtonGroup'
 import * as styles from './sign-in.css'
 import clsx from 'clsx'
-import { textRecipe } from './recipes/text.css'
-import { useSetting } from './hooks/useSetting'
-import { Divider } from './components/Divider'
-import { borderRecipe } from './recipes/border.css'
+import { textRecipe } from '../recipes/text.css'
+import { useSetting } from '../hooks/useSetting'
+import { Divider } from '../components/Divider'
+import { borderRecipe } from '../recipes/border.css'
+import { EmailPasswordForm } from './EmailPasswordForm'
 
 type Props = {
   onClickSignUp?: VoidFunction
@@ -18,7 +19,7 @@ export const SignIn: FC<Props> = ({ onClickSignUp }) => {
     <div className={clsx(borderRecipe(), styles.signIn)}>
       <SocialButtonGroup />
       {isSocialLogin && <Divider />}
-      <div>Emal & Password</div>
+      <EmailPasswordForm />
       {onClickSignUp && (
         <>
           <Divider />
@@ -40,3 +41,8 @@ export const SignIn: FC<Props> = ({ onClickSignUp }) => {
     </div>
   )
 }
+
+export { GithubButton } from './GithubButton'
+export { GoogleButton } from './GoogleButton'
+export { SocialButtonGroup } from './SocialButtonGroup'
+export { EmailPasswordForm } from './EmailPasswordForm'

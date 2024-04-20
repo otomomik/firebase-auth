@@ -1,9 +1,9 @@
 import { ComponentProps, FC } from 'react'
-import { useSetting } from './hooks/useSetting'
+import { useSetting } from '../hooks/useSetting'
 import { ProviderId } from 'firebase/auth'
-import { GithubIcon } from './icons/Github'
-import { signInWithSocial } from './utils/signIn'
-import { BaseButton } from './components/BaseButton'
+import { GithubIcon } from '../icons/Github'
+import { signInWithSocial } from '../utils/signIn'
+import { BaseButton } from '../components/BaseButton'
 
 type Props = Omit<ComponentProps<typeof BaseButton>, 'children'>
 

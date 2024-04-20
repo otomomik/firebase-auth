@@ -1,5 +1,6 @@
 import type { FC } from 'react'
-import { Provider, SignIn } from '@firebase-auth/react'
+import { Provider } from '@firebase-auth/react'
+import { SignIn } from '@firebase-auth/react/SignIn'
 import { app } from './utils/firebase'
 import { ProviderId } from 'firebase/auth'
 import { Page } from './Page'

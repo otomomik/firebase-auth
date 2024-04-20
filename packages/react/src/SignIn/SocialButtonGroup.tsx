@@ -1,11 +1,11 @@
 import { ComponentProps, FC } from 'react'
-import { SocialProviderId, useSetting } from './hooks/useSetting'
+import { SocialProviderId, useSetting } from '../hooks/useSetting'
 import { ProviderId } from 'firebase/auth'
 import { GithubButton } from './GithubButton'
 import { GoogleButton } from './GoogleButton'
 import * as styles from './social-button-group.css'
 import clsx from 'clsx'
-import { textRecipe } from './recipes/text.css'
+import { textRecipe } from '../recipes/text.css'
 
 type Props = ComponentProps<'div'>
 

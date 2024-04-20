@@ -12,6 +12,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/firebase-auth-react.es.js"
     },
+    "./*": {
+      "types": "./dist/*/*.d.ts",
+      "import": "./dist/*.es.js"
+    },
     "./style.css": {
       "import": "./dist/style.css"
     }

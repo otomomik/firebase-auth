@@ -17,4 +17,6 @@ export const roundButton = style({
 
 export const squareButton = style({
   borderRadius: 16,
+  paddingTop: 8,
+  paddingBottom: 8,
 })
