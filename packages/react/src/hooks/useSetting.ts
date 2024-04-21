@@ -10,6 +10,7 @@ export const useSetting = () => {
     throw new Error('Providerが見つかりません')
   }
 
+  const isEmailPasswordLogin = context.providerIds.includes(ProviderId.PASSWORD)
   const socialProviderIds = context.providerIds.filter(
     (id): id is SocialProviderId[keyof SocialProviderId] =>
       id === ProviderId.GOOGLE || id === ProviderId.GITHUB
@@ -18,6 +19,7 @@ export const useSetting = () => {
 
   return {
     ...context,
+    isEmailPasswordLogin,
     socialProviderIds,
     isSocialLogin,
   }

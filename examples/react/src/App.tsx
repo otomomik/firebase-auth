@@ -9,7 +9,7 @@ export const App: FC = () => {
   return (
     <Provider
       app={app}
-      providerIds={[ProviderId.GOOGLE, ProviderId.GITHUB]}
+      providerIds={[ProviderId.PASSWORD, ProviderId.GOOGLE, ProviderId.GITHUB]}
       flow="redirect"
     >
       <Page />

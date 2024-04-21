@@ -5,12 +5,15 @@ import { Input } from '../components/Input'
 import * as styles from './email-password-form.css'
 import clsx from 'clsx'
 import { textRecipe } from '../recipes/text.css'
+import { useSetting } from '../hooks/useSetting'
+import { signInWithEmailPassword } from '../utils/signIn'
 
 type Props = {
   onClickResetPassword?: VoidFunction
 }
 
 export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
+  const { app, isEmailPasswordLogin } = useSetting()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<
@@ -19,8 +22,13 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
     email: null,
     password: null,
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const isDisabled = email === '' || password === ''
+  if (!isEmailPasswordLogin) {
+    return null
+  }
+
+  const isDisabled = isSubmitting || email === '' || password === ''
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -87,15 +95,23 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    if (isSubmitting) {
+      return
+    }
+    setIsSubmitting(true)
     event.preventDefault()
 
     const isEmailValid = validateEmail()
     const isPasswordValid = validatePassword()
-    if (!isEmailValid || !isPasswordValid) {
-      return
+    if (isEmailValid && isPasswordValid) {
+      await signInWithEmailPassword({
+        app,
+        email,
+        password,
+      })
     }
 
-    console.log(email, password)
+    setIsSubmitting(false)
   }
 
   return (

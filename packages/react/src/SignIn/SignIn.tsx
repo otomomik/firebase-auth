@@ -1,28 +1,30 @@
-import type { ComponentProps, FC } from 'react'
+import { Fragment, ComponentProps, FC } from 'react'
 import { SocialButtonGroup } from './SocialButtonGroup'
 import * as styles from './sign-in.css'
 import clsx from 'clsx'
 import { textRecipe } from '../recipes/text.css'
-import { useSetting } from '../hooks/useSetting'
 import { Divider } from '../components/Divider'
 import { borderRecipe } from '../recipes/border.css'
 import { EmailPasswordForm } from './EmailPasswordForm'
+import { useSetting } from '../hooks/useSetting'
 
+type EmailPasswordFormProps = ComponentProps<typeof EmailPasswordForm>
 type Props = {
   onClickSignUp?: VoidFunction
-} & Pick<ComponentProps<typeof EmailPasswordForm>, 'onClickResetPassword'>
+  onClickResetPassword?: EmailPasswordFormProps['onClickResetPassword']
+}
 
 export const SignIn: FC<Props> = ({ onClickSignUp, onClickResetPassword }) => {
-  const { isSocialLogin } = useSetting()
+  const { isEmailPasswordLogin, isSocialLogin } = useSetting()
 
   return (
     <div className={clsx(borderRecipe(), styles.signIn)}>
-      <SocialButtonGroup />
-      {isSocialLogin && <Divider />}
-      <EmailPasswordForm onClickResetPassword={onClickResetPassword} />
-      {onClickSignUp && (
-        <>
-          <Divider />
+      {[
+        isSocialLogin && <SocialButtonGroup />,
+        isEmailPasswordLogin && (
+          <EmailPasswordForm onClickResetPassword={onClickResetPassword} />
+        ),
+        onClickSignUp && (
           <div className={clsx(styles.signUp)}>
             <a
               className={clsx(
@@ -31,13 +33,20 @@ export const SignIn: FC<Props> = ({ onClickSignUp, onClickResetPassword }) => {
                   link: true,
                 })
               )}
-              onClick={() => onClickSignUp()}
+              onClick={onClickSignUp}
             >
               会員登録はこちらから
             </a>
           </div>
-        </>
-      )}
+        ),
+      ]
+        .filter(Boolean)
+        .map((component, index) => (
+          <Fragment key={index}>
+            {index !== 0 && <Divider />}
+            {component}
+          </Fragment>
+        ))}
     </div>
   )
 }

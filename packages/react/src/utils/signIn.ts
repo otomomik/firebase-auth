@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   ProviderId,
   getAuth,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
 } from 'firebase/auth'
@@ -34,4 +35,18 @@ export const signInWithSocial = async ({
   await (flow === 'popup'
     ? signInWithPopup(auth, provider)
     : signInWithRedirect(auth, provider))
+}
+
+export const signInWithEmailPassword = async ({
+  app,
+  email,
+  password,
+}: {
+  app: ReturnType<typeof useSetting>['app']
+  email: string
+  password: string
+}) => {
+  const auth = getAuth(app)
+
+  await signInWithEmailAndPassword(auth, email, password)
 }
