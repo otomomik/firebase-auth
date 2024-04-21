@@ -41,8 +41,3 @@ export const SignIn: FC<Props> = ({ onClickSignUp, onClickResetPassword }) => {
     </div>
   )
 }
-
-export { GithubButton } from './GithubButton'
-export { GoogleButton } from './GoogleButton'
-export { SocialButtonGroup } from './SocialButtonGroup'
-export { EmailPasswordForm } from './EmailPasswordForm'

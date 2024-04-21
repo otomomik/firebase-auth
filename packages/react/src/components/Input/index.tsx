@@ -5,7 +5,7 @@ import * as styles from './style.css'
 
 type Props = Pick<
   ComponentProps<'input'>,
-  'id' | 'type' | 'defaultValue' | 'onChange' | 'placeholder'
+  'id' | 'type' | 'defaultValue' | 'onChange' | 'onBlur' | 'placeholder'
 >
 
 export const Input: FC<Props> = (props) => {

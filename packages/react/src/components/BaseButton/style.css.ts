@@ -9,6 +9,9 @@ export const baseButton = style({
   ':hover': {
     borderColor: '#000000',
   },
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
 })
 
 export const roundButton = style({

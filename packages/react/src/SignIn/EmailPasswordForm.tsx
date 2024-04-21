@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { BaseButton } from '../components/BaseButton'
 import * as baseButtonStyles from '../components/BaseButton/style.css'
 import { Input } from '../components/Input'
@@ -11,8 +11,95 @@ type Props = {
 }
 
 export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState<
+    Record<'email' | 'password', string | null>
+  >({
+    email: null,
+    password: null,
+  })
+
+  const isDisabled = email === '' || password === ''
+
+  const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+  }
+
+  const validateEmail = () => {
+    if (!email.trim()) {
+      setErrors((prev) => ({
+        ...prev,
+        email: 'メールアドレスを入力してください',
+      }))
+      return false
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setErrors((prev) => ({
+        ...prev,
+        email: '正しい形式のメールアドレスを入力してください',
+      }))
+      return false
+    }
+
+    setErrors((prev) => ({
+      ...prev,
+      email: '',
+    }))
+    return true
+  }
+
+  const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+  }
+
+  const validatePassword = () => {
+    if (!password.trim()) {
+      setErrors((prev) => ({
+        ...prev,
+        password: 'パスワードを入力してください',
+      }))
+      return false
+    }
+
+    if (password.length < 8) {
+      setErrors((prev) => ({
+        ...prev,
+        password: '8文字以上のパスワードを入力してください',
+      }))
+      return false
+    }
+
+    if (password.length > 32) {
+      setErrors((prev) => ({
+        ...prev,
+        password: '32文字以下のパスワードを入力してください',
+      }))
+      return false
+    }
+
+    setErrors((prev) => ({
+      ...prev,
+      password: '',
+    }))
+    return true
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const isEmailValid = validateEmail()
+    const isPasswordValid = validatePassword()
+    if (!isEmailValid || !isPasswordValid) {
+      return
+    }
+
+    console.log(email, password)
+  }
+
   return (
-    <div className={clsx(styles.emailPasswordForm)}>
+    <form className={clsx(styles.emailPasswordForm)} onSubmit={handleSubmit}>
       <div className={clsx(styles.inputGroup)}>
         <label
           className={clsx(
@@ -25,7 +112,24 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
         >
           メールアドレス
         </label>
-        <Input id="email" type="email" placeholder="mail@example.com" />
+        <Input
+          id="email"
+          type="email"
+          placeholder="mail@example.com"
+          onChange={handleChangeEmail}
+        />
+        {!!errors.email && (
+          <span
+            className={clsx(
+              textRecipe({
+                size: 'sm',
+                color: 'error',
+              })
+            )}
+          >
+            {errors.email}
+          </span>
+        )}
       </div>
       <div className={clsx(styles.inputGroup)}>
         <label
@@ -39,7 +143,19 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
         >
           パスワード
         </label>
-        <Input id="password" type="password" />
+        <Input id="password" type="password" onChange={handleChangePassword} />
+        {!!errors.password && (
+          <span
+            className={clsx(
+              textRecipe({
+                size: 'sm',
+                color: 'error',
+              })
+            )}
+          >
+            {errors.password}
+          </span>
+        )}
       </div>
       {onClickResetPassword && (
         <div className={clsx(styles.resetPassword)}>
@@ -63,9 +179,11 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
           }),
           baseButtonStyles.squareButton
         )}
+        type="submit"
+        disabled={isDisabled}
       >
         ログイン
       </BaseButton>
-    </div>
+    </form>
   )
 }

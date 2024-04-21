@@ -23,8 +23,11 @@ export const textRecipe = recipe({
       },
     },
     color: {
-      black: {
+      normal: {
         color: '#333333',
+      },
+      error: {
+        color: '#ff0000',
       },
     },
     link: {
@@ -47,7 +50,7 @@ export const textRecipe = recipe({
   },
   defaultVariants: {
     size: 'md',
-    color: 'black',
+    color: 'normal',
     weight: 'normal',
   },
 })
