@@ -24,6 +24,11 @@
     }
   },
   "types": "./dist/index.d.ts",
+    "repository": {  
+    "type": "git",  
+    "url": "https://github.com/otomomik/firebase-auth.git",
+    "directory": "packages/react"
+  },
   "scripts": {
     "dev": "tsx scripts/dev.ts",
     "build": "tsc && vite build",
