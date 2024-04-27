@@ -10,7 +10,7 @@ importers:
 
   examples/react:
     dependencies:
-      '@firebase-auth/react':
+      '@otomomik/firebase-auth-ui-react':
         specifier: workspace:*
         version: link:../../packages/react
       firebase:
@@ -83,9 +83,6 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      vanilla-reset:
-        specifier: ^2021.11.29
-        version: 2021.11.29(@vanilla-extract/css@1.14.2)
     devDependencies:
       '@types/node':
         specifier: ^20.12.5
@@ -3639,15 +3636,6 @@ packages:
     resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
     engines: {node: '>= 0.10'}
     dev: true
-
-  /vanilla-reset@2021.11.29(@vanilla-extract/css@1.14.2):
-    resolution: {integrity: sha512-Ae49PU4iUNRiyTbCGszaW+H2h1+FnB+KpVPMYb8mngX0zF5ICnAU0yVOzpUDfzfa4lrmJ3+LTxCPZ2HbXP1t/g==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      '@vanilla-extract/css': ^1.6.3
-    dependencies:
-      '@vanilla-extract/css': 1.14.2
-    dev: false
 
   /vite-node@1.5.0(@types/node@20.12.5):
     resolution: {integrity: sha512-tV8h6gMj6vPzVCa7l+VGq9lwoJjW8Y79vst8QZZGiuRAfijU+EEWuc0kFpmndQrWhMMhet1jdSF+40KSZUqIIw==}

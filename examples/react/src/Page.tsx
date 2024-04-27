@@ -1,4 +1,4 @@
-import { useAuth } from '@firebase-auth/react'
+import { useAuth } from '@otomomik/firebase-auth-ui-react'
 import { getAuth } from 'firebase/auth'
 import { FC } from 'react'
 import { app } from './utils/firebase'

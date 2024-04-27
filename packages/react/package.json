@@ -1,5 +1,5 @@
 {
-  "name": "@firebase-auth/react",
+  "name": "@otomomik/firebase-auth-ui-react",
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",

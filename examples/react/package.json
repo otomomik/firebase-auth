@@ -13,7 +13,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@firebase-auth/react": "workspace:*",
+    "@otomomik/firebase-auth-ui-react": "workspace:*",
     "firebase": "^10.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
