@@ -3,7 +3,7 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 export const borderRecipe = recipe({
   variants: {
     width: {
-      normal: {
+      default: {
         borderWidth: 1,
       },
     },
@@ -13,15 +13,18 @@ export const borderRecipe = recipe({
       },
     },
     color: {
+      default: {
+        borderColor: 'rgba(8,19,26,0.1411764705882353)',
+      },
       black: {
         borderColor: '#333333',
       },
     },
   },
   defaultVariants: {
-    width: 'normal',
+    width: 'default',
     style: 'solid',
-    color: 'black',
+    color: 'default',
   },
 })
 export type BorderRecipeVariants = NonNullable<

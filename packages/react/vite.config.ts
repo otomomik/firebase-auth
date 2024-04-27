@@ -11,6 +11,7 @@ export default defineConfig({
       entry: [
         resolve(__dirname, 'src/index.ts'),
         resolve(__dirname, 'src/SignIn/SignIn.tsx'),
+        resolve(__dirname, 'src/SignUp/SignUp.tsx'),
         resolve(__dirname, 'src/SignOut/SignOut.tsx'),
       ],
       name: 'FirebaseAuthReact',

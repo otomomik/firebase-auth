@@ -5,23 +5,19 @@ import { GithubButton } from './GithubButton'
 import { GoogleButton } from './GoogleButton'
 import * as styles from './social-button-group.css'
 import clsx from 'clsx'
-import { textRecipe } from '../recipes/text.css'
 
 type Props = ComponentProps<'div'>
 
 const SocialButtons: Record<
   SocialProviderId[keyof SocialProviderId],
   {
-    label: string
     component: FC
   }
 > = {
   [ProviderId.GITHUB]: {
-    label: 'Github',
     component: GithubButton,
   },
   [ProviderId.GOOGLE]: {
-    label: 'Google',
     component: GoogleButton,
   },
 }
@@ -37,24 +33,9 @@ export const SocialButtonGroup: FC<Props> = ({ className }) => {
     <div className={clsx(styles.socialButtonGroup, className)}>
       {socialProviderIds.map((id) => {
         const social = SocialButtons[id]
-        const label = social.label
         const Component = social.component
 
-        return (
-          <div className={clsx(styles.button)} key={id}>
-            <Component />
-            <label
-              className={clsx(
-                textRecipe({
-                  size: 'xs',
-                })
-              )}
-              htmlFor={id}
-            >
-              {label}
-            </label>
-          </div>
-        )
+        return <Component key={id} />
       })}
     </div>
   )

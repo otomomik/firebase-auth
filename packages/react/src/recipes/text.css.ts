@@ -23,7 +23,7 @@ export const textRecipe = recipe({
       },
     },
     color: {
-      normal: {
+      default: {
         color: '#333333',
       },
       error: {
@@ -40,7 +40,7 @@ export const textRecipe = recipe({
       light: {
         fontWeight: '300',
       },
-      normal: {
+      default: {
         fontWeight: '400',
       },
       bold: {
@@ -50,8 +50,8 @@ export const textRecipe = recipe({
   },
   defaultVariants: {
     size: 'md',
-    color: 'normal',
-    weight: 'normal',
+    color: 'default',
+    weight: 'default',
   },
 })
 export type TextRecipeVariants = NonNullable<RecipeVariants<typeof textRecipe>>
