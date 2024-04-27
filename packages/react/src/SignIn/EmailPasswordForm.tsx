@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { textRecipe } from '../recipes/text.css'
 import { useSetting } from '../hooks/useSetting'
 import { signInWithEmailPassword } from '../utils/signIn'
+import { validateEmail, validatePassword } from '../utils/validate'
 
 type Props = {
   onClickResetPassword?: VoidFunction
@@ -34,64 +35,8 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
     setEmail(event.target.value)
   }
 
-  const validateEmail = () => {
-    if (!email.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        email: 'メールアドレスを入力してください',
-      }))
-      return false
-    }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrors((prev) => ({
-        ...prev,
-        email: '正しい形式のメールアドレスを入力してください',
-      }))
-      return false
-    }
-
-    setErrors((prev) => ({
-      ...prev,
-      email: '',
-    }))
-    return true
-  }
-
   const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
-  }
-
-  const validatePassword = () => {
-    if (!password.trim()) {
-      setErrors((prev) => ({
-        ...prev,
-        password: 'パスワードを入力してください',
-      }))
-      return false
-    }
-
-    if (password.length < 8) {
-      setErrors((prev) => ({
-        ...prev,
-        password: '8文字以上のパスワードを入力してください',
-      }))
-      return false
-    }
-
-    if (password.length > 32) {
-      setErrors((prev) => ({
-        ...prev,
-        password: '32文字以下のパスワードを入力してください',
-      }))
-      return false
-    }
-
-    setErrors((prev) => ({
-      ...prev,
-      password: '',
-    }))
-    return true
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -101,8 +46,16 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
     setIsSubmitting(true)
     event.preventDefault()
 
-    const isEmailValid = validateEmail()
-    const isPasswordValid = validatePassword()
+    const emailMessage = validateEmail(email)
+    const passwordMessage = validatePassword(password)
+    setErrors((prev) => ({
+      ...prev,
+      email: emailMessage,
+      password: passwordMessage,
+    }))
+
+    const isEmailValid = emailMessage === null
+    const isPasswordValid = passwordMessage === null
     if (isEmailValid && isPasswordValid) {
       await signInWithEmailPassword({
         app,
@@ -198,7 +151,7 @@ export const EmailPasswordForm: FC<Props> = ({ onClickResetPassword }) => {
         type="submit"
         disabled={isDisabled}
       >
-        ログイン
+        ログイン
       </BaseButton>
     </form>
   )
