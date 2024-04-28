@@ -6,15 +6,11 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/firebase-auth-react.es.js",
+  "main": "./dist/firebase-auth-ui-react.es.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/firebase-auth-react.es.js"
-    },
-    "./*": {
-      "types": "./dist/*/*.d.ts",
-      "import": "./dist/*.es.js"
+      "import": "./dist/firebase-auth-ui-react.es.js"
     },
     "./style.css": {
       "import": "./dist/style.css"
@@ -24,8 +20,8 @@
     }
   },
   "types": "./dist/index.d.ts",
-    "repository": {  
-    "type": "git",  
+  "repository": {
+    "type": "git",
     "url": "https://github.com/otomomik/firebase-auth.git",
     "directory": "packages/react"
   },

@@ -8,20 +8,10 @@ export default defineConfig({
   plugins: [react(), dts(), vanillaExtractPlugin()],
   build: {
     lib: {
-      entry: [
-        resolve(__dirname, 'src/index.ts'),
-        resolve(__dirname, 'src/SignIn/SignIn.tsx'),
-        resolve(__dirname, 'src/SignUp/SignUp.tsx'),
-        resolve(__dirname, 'src/SignOut/SignOut.tsx'),
-      ],
+      entry: [resolve(__dirname, 'src/index.ts')],
       name: 'FirebaseAuthReact',
       formats: ['es'],
-      fileName: (format, entryName) => {
-        if (entryName === 'index') {
-          return `firebase-auth-react.${format}.js`
-        }
-        return `${entryName}.${format}.js`
-      },
+      fileName: (format) => `firebase-auth-ui-react.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

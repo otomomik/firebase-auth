@@ -1,1 +1,1 @@
-# firebase-auth
+# firebase-auth-ui
